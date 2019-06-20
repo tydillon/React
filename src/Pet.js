@@ -14,7 +14,8 @@ const Pet = ({
   breed = 'None provided'
 }) => {
   return (
-    <div style={style.container}>
+    // <div style={style.container}>
+    <div>
       <h1>Name: {name}</h1>
       <h2>Animal: {animal}</h2>
       <h2>Breed: {breed}</h2>
@@ -22,13 +23,13 @@ const Pet = ({
   );
 };
 
-const style = {
-  container: {
-    backgroundColor: 'white',
-    border: '1px solid black',
-    padding: '5px',
-    margin: 'auto'
-  }
-};
+// const style = {
+//   container: {
+//     backgroundColor: 'white',
+//     border: '1px solid black',
+//     padding: '5px',
+//     margin: 'auto'
+//   }
+// };
 
 export default Pet;

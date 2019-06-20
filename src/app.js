@@ -7,7 +7,8 @@ const App = () => {
   return (
     <div>
       <h1>Adopt Me!</h1>
-      <div className={style.flexer}>
+      {/* <div className={style.flexer}> */}
+      <div>
         <Pet name="Harley" animal="Dog" breed="Goldendoodle" />
         <Pet name="Chabela" animal="Dog" breed="Terrier" />
         <Pet name="Sally" animal="Turtle" breed="Red Eared Slider" />
@@ -18,13 +19,13 @@ const App = () => {
   );
 };
 
-const style = {
-  flexer: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    padding: '10px',
-    border: '10px dotted red'
-  }
-};
+// const style = {
+//   flexer: {
+//     display: 'flex',
+//     flexWrap: 'wrap',
+//     padding: '10px',
+//     border: '10px dotted red'
+//   }
+// };
 
 render(React.createElement(App), document.getElementById('root'));
