@@ -1,11 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import pet, { ANIMALS } from '@frontendmasters/pet';
+import useDropdown from './useDropdown';
 
 const SearchParam = () => {
   const [location, setLocation] = useState('Seattle, WA');
-  const [animal, setAnimal] = useState('All');
-  const [breed, setBreed] = useState('');
+  //   const [animal, setAnimal] = useState('All');
+  //   const [breed, setBreed] = useState('');
   const [breeds, setBreeds] = useState([]);
+  const [animal, AnimalDropdown] = useDropdown('Animal', 'All', ANIMALS);
+  const [breed, BreedDropdown, setBreed] = useDropdown('Breed', '', breeds);
+  const [team, SECDropdown, setSECTeam] = useDropdown('SEC Teams', 'UGA', [
+    'UGA',
+    'Auburn',
+    'BAMA'
+  ]);
 
   useEffect(() => {
     setBreeds([]);
@@ -27,7 +35,10 @@ const SearchParam = () => {
             onChange={e => setLocation(e.target.value)}
           ></input>
         </label>
-        <label htmlFor="animal">
+        <AnimalDropdown />
+        <BreedDropdown />
+        <SECDropdown />
+        {/* <label htmlFor="animal">
           Animal
           <select
             id={animal}
@@ -59,7 +70,7 @@ const SearchParam = () => {
               </option>
             ))}
           </select>
-        </label>
+        </label> */}
         <button>Submit</button>
       </form>
     </div>
