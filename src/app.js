@@ -1,43 +1,30 @@
 import React from 'react';
 import { render } from 'react-dom';
 import Pet from './Pet';
-
-// const App = () => {
-//   return React.createElement('div', {}, [
-//     React.createElement('h1', {}, 'Adopt Me!'),
-//     React.createElement(Pet, {
-//       name: 'Harley',
-//       animal: 'Dog',
-//       breed: 'Goldendoodle'
-//     }),
-//     React.createElement(Pet, {
-//       name: 'Chabela',
-//       animal: 'Dog',
-//       breed: 'Terrier'
-//     }),
-//     React.createElement(Pet, {
-//       name: 'Sally',
-//       animal: 'Turtle',
-//       breed: 'Red Eared Slider'
-//     }),
-//     React.createElement(Pet, {
-//       name: 'Sniffles',
-//       animal: 'Rabbit',
-//       breed: 'Fuzzy'
-//     })
-//   ]);
-// };
+import SearchParam from './SearchParam';
 
 const App = () => {
   return (
     <div>
       <h1>Adopt Me!</h1>
-      <Pet name="Harley" animal="Dog" breed="Goldendoodle" />
-      <Pet name="Chabela" animal="Dog" breed="Terrier" />
-      <Pet name="Sally" animal="Turtle" breed="Red Eared Slider" />
-      <Pet name="Snookies" animal="Rabbit" breed="Fuzzy" />
+      <div className={style.flexer}>
+        <Pet name="Harley" animal="Dog" breed="Goldendoodle" />
+        <Pet name="Chabela" animal="Dog" breed="Terrier" />
+        <Pet name="Sally" animal="Turtle" breed="Red Eared Slider" />
+        <Pet name="Snookies" animal="Rabbit" breed="Fuzzy" />
+      </div>
+      <SearchParam />
     </div>
   );
+};
+
+const style = {
+  flexer: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    padding: '10px',
+    border: '10px dotted red'
+  }
 };
 
 render(React.createElement(App), document.getElementById('root'));
