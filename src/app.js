@@ -2,21 +2,17 @@ import React from 'react';
 import { render } from 'react-dom';
 import Pet from './Pet';
 import SearchParam from './SearchParam';
+import { Router } from '@reach/router';
+import Details from './Details';
 
 const App = () => {
-  // const style = {
-  //   flexer: {
-  //     display: 'flex',
-  //     flexWrap: 'wrap',
-  //     padding: '10px'
-  //   }
-  // };
   return (
     <div>
       <h1>Adopt Me!</h1>
-      {/* <div style={style.flexer}> */}
-      <SearchParam />
-      {/* </div> */}
+      <Router>
+        <SearchParam path="/" />
+        <Details path="/details/:id" />
+      </Router>
     </div>
   );
 };
