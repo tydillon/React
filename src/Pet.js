@@ -1,23 +1,18 @@
 import React from 'react';
 
-const Pet = ({
-  name = 'None provided',
-  animal = 'None provided',
-  breed = 'None provided'
-}) => {
-  //   const style = {
-  //     container: {
-  //       backgroundColor: 'white',
-  //       border: '1px solid black'
-  //     }
-  //   };
+const Pet = ({ name, animal, breed, media, location, id, key }) => {
+  const hero = media.length ? media[0].small : 'http://placecorgi.com/300x300';
+
   return (
-    // <div style={style.container}>
-    <div>
-      <h1>Name: {name}</h1>
-      <h2>Animal: {animal}</h2>
-      <h2>Breed: {breed}</h2>
-    </div>
+    <a href={`/details/${id}`} className="pet">
+      <div className="image-container">
+        <img src={hero} alt={name} />
+      </div>
+      <div className="info">
+        <h1>{name}</h1>
+        <h2>{`${animal} - ${breed} - ${location}`}</h2>
+      </div>
+    </a>
   );
 };
 
