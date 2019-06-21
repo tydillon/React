@@ -23,7 +23,7 @@ const SearchParam = () => {
       setBreeds(res.breeds.map(obj => obj.name));
     });
     //animal is what the thing is listening to
-  }, [animal]);
+  }, [animal, setBreed]);
 
   return (
     <div className="search-params">
