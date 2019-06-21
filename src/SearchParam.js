@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import pet, { ANIMALS } from '@frontendmasters/pet';
 import useDropdown from './useDropdown';
+import Results from './Results';
 
 const SearchParam = () => {
   const [location, setLocation] = useState('Seattle, WA');
-  //   const [animal, setAnimal] = useState('All');
-  //   const [breed, setBreed] = useState('');
   const [breeds, setBreeds] = useState([]);
   const [animal, AnimalDropdown] = useDropdown('Animal', 'All', ANIMALS);
   const [breed, BreedDropdown, setBreed] = useDropdown('Breed', '', breeds);
-  const [team, SECDropdown, setSECTeam] = useDropdown('SEC Teams', 'UGA', [
-    'UGA',
-    'Auburn',
-    'BAMA'
-  ]);
+  const [petResults, setPetResults] = useState([]);
+
+  async function requestPets() {
+    const { animals } = await pet.animals({ location, breed, type: animal });
+    console.log({ location, breed, type: animal });
+    setPetResults(animals || []);
+  }
 
   useEffect(() => {
     setBreeds([]);
@@ -21,11 +22,17 @@ const SearchParam = () => {
     pet.breeds(animal).then(res => {
       setBreeds(res.breeds.map(obj => obj.name));
     });
+    //animal is what the thing is listening to
   }, [animal]);
 
   return (
     <div className="search-params">
-      <form>
+      <form
+        onSubmit={e => {
+          e.preventDefault();
+          requestPets();
+        }}
+      >
         <label htmlFor="location">
           Location
           <input
@@ -37,42 +44,9 @@ const SearchParam = () => {
         </label>
         <AnimalDropdown />
         <BreedDropdown />
-        <SECDropdown />
-        {/* <label htmlFor="animal">
-          Animal
-          <select
-            id={animal}
-            value={animal}
-            onChange={e => setAnimal(e.target.value)}
-            onBlur={e => setAnimal(e.target.value)}
-          >
-            <option>All</option>
-            {ANIMALS.map(animal => (
-              <option key={animal} value={animal}>
-                {animal}
-              </option>
-            ))}
-          </select>
-        </label>
-        <label htmlFor="breed">
-          Breed
-          <select
-            id={breed}
-            value={breed}
-            onChange={e => setBreed(e.target.value)}
-            onBlur={e => setBreed(e.target.value)}
-            disabled={breeds.length === 0}
-          >
-            <option>All</option>
-            {breeds.map(breed => (
-              <option key={breed} value={breed}>
-                {breed}
-              </option>
-            ))}
-          </select>
-        </label> */}
         <button>Submit</button>
       </form>
+      <Results pets={petResults} />
     </div>
   );
 };
