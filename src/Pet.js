@@ -5,14 +5,15 @@ const Pet = ({
   animal = 'None provided',
   breed = 'None provided'
 }) => {
-  const style = {
-    container: {
-      backgroundColor: 'white',
-      border: '1px solid black'
-    }
-  };
+  //   const style = {
+  //     container: {
+  //       backgroundColor: 'white',
+  //       border: '1px solid black'
+  //     }
+  //   };
   return (
-    <div style={style.container}>
+    // <div style={style.container}>
+    <div>
       <h1>Name: {name}</h1>
       <h2>Animal: {animal}</h2>
       <h2>Breed: {breed}</h2>
